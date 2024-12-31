@@ -21,21 +21,76 @@
             display: flex;
             justify-content: center;
             padding: 1rem 2rem;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0,0,0,0.8);
             z-index: 1000;
         }
 
-        nav a {
+        nav h1 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links a {
             color: white;
             text-decoration: none;
-            margin: 0 1.5rem;
             font-size: 1rem;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             color: #ff5733;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 1rem;
+                border-radius: 8px;
+                z-index: 1000;
+                width: 100%
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 0.5rem 0;
+            }
         }
 
         /* Slider Section */
@@ -72,8 +127,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-            backdrop-filter: blur(5px); /* Blurs only the background */
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
             z-index: 1;
         }
 
@@ -236,7 +291,7 @@
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
-                padding: 0.5rem;
+                padding: 1rem;
             }
 
             nav a {
@@ -244,62 +299,57 @@
                 font-size: 0.9rem;
             }
 
-            .slider {
-                height: 60vh;
-            }
-
             .slide h1 {
                 font-size: 2.5rem;
             }
 
-            #about {
-                padding: 2rem 1rem;
-            }
-
-            #about h2 {
+            .typographic-graphic {
                 font-size: 2rem;
             }
 
             #about p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 0.8rem;
             }
 
-            #story {
-                padding: 2rem 1rem;
-            }
-
-            #story h2 {
+            .slide h1 {
                 font-size: 2rem;
             }
 
-            #story p {
-                font-size: 1rem;
+            .typographic-graphic {
+                font-size: 1.5rem;
             }
 
-            .contact-buttons {
-                flex-direction: column;
-                gap: 0.5rem;
+            #about h2 {
+                font-size: 1.5rem;
             }
 
-            .contact-button img {
-                width: 30px;
-                height: 30px;
-            }
-
-            .contact-info {
-                font-size: 0.9rem;
+            #about p {
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
     <nav>
-        <a href="#about">About Me</a>
-        <a href="#projects">Projects</a>
-        <a href="#github">GitHub</a>
-        <a href="services.html">Services</a>
-        <a href="#contact">Contact</a>
-        <a href="resume.html">Resume</a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#github">GitHub</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="resume.html">Resume</a></li>
+        </ul>
     </nav>
 
     <div class="slider">
@@ -368,6 +418,10 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
         const slides = document.querySelector('.slides');
         const slideCount = document.querySelectorAll('.slide').length;
         let currentIndex = 0;
