@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sajeev Singh | Portfolio</title>
+    <style>
+        /* General Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff5733;
+        }
+
+        /* Slider Section */
+        .slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 300%;
+        }
+
+        .slide {
+            flex: 1;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            backdrop-filter: blur(5px); /* Blurs only the background */
+            z-index: 1;
+        }
+
+        .slide h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+            position: relative;
+        }
+
+        .slide p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+            position: relative;
+        }
+
+        .typographic-graphic {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff5733, #33c1ff, #33ff77);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            line-height: 1.2;
+            z-index: 2;
+            position: relative;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .navigation button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+
+        .navigation button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #000;
+            color: white;
+        }
+
+        /* About Section */
+        #about {
+            padding: 4rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            color: #333;
+            border-left: 5px solid #333;
+            margin-top: 8rem; /* Adjusted gap from slider */
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            padding-right: 1rem;
+            border-right: 2px solid #333;
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            margin: 0;
+            padding-left: 1rem;
+        }
+
+        /* Story Section */
+        #story {
+            padding: 4rem 2rem;
+            background-color: #ffffff;
+            color: #444;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin-top: 2rem; /* Reduced gap from About section */
+        }
+
+        #story h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ff5733;
+            margin-bottom: 2rem;
+        }
+
+        #story p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: justify;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* Contact Section */
+        #contact {
+            padding: 4rem 2rem;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-button img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s;
+        }
+
+        .contact-button img:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .contact-info a {
+            color: #ff5733;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#github">GitHub</a>
+        <a href="services.html">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.html">Resume</a>
+    </nav>
+
+    <div class="slider">
+        <div class="slides">
+            <!-- Slide 1 -->
+            <div class="slide" style="background-image: url('my-image.jpeg');">
+                <h1>Hey, I am Sajeev Singh</h1>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('portfolio-image.webp');">
+                <h1>Welcome to my Data Science Portfolio</h1>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide" style="background-color: #333;">
+                <div class="typographic-graphic">
+                    Turning Data <br> Into Opportunities, <br> One Insight at a Time
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <button id="prev">&#8249;</button>
+            <button id="next">&#8250;</button>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a Data Scientist and Automation Strategist with a passion for uncovering meaningful patterns in data and eliminating manual redundancies in repetitive tasks to drive efficiency and innovation.</p>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story">
+        <h2>A Glimpse Into My Day</h2>
+        <p>I spend most of my day in front of a computer screen, programming and solving problems. I have a knack for working with arbitrary datasets, challenging myself with new projects, and deriving insights through algorithms. My skills include machine learning, data visualization, and working with state-of-the-art models from platforms like Hugging Face. I excel in building end-to-end data science solutions and automating repetitive tasks, which brings me immense satisfaction.
+        <br><br>
+        In the evenings, I unwind by hitting the gym, playing badminton, or simply exploring my surroundings. As the day settles, I immerse myself in articles on Medium or similar platforms to stay updated with industry trends—and sometimes, I contribute my own thoughts through writing.
+        <br><br>
+        Additionally, I enjoy testing my skills on platforms like HackerRank and Kaggle, tackling challenges to continuously improve. Feel free to explore my projects and articles linked below. My GitHub repositories are open for you to dive into and experiment with.
+        <br><br>
+        Professionally, I have worked as a Data Scientist at DataFlow Group in India, where I led numerous impactful projects. Following my passion, I joined Rutgers University, New Brunswick, for further studies. My aim is to push the boundaries of data science, leveraging insights to solve problems and automate redundant processes for a better tomorrow.</p>
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-buttons">
+            <a href="https://www.linkedin.com/in/sajeev-singh-983b721bb/" target="_blank" class="contact-button">
+                <img src="linkedin-logo.jpg" alt="LinkedIn">
+            </a>
+            <a href="mailto:sajeevysingh@gmail.com" class="contact-button">
+                <img src="email-logo.png" alt="Email">
+            </a>
+            <a href="https://github.com/sajeevsingh" class="contact-button">
+                <img src="github-logo.png" alt="Github">
+            </a>
+
+        </div>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:sajeevysingh@gmail.com">sajeevysingh@gmail.com</a></p>
+            <p>Phone: +1 (732) 558-9741</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Sajeev Singh. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelector('.slides');
+        const slideCount = document.querySelectorAll('.slide').length;
+        let currentIndex = 0;
+
+        document.getElementById('prev').addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? slideCount - 1 : currentIndex - 1;
+            slides.style.transform = `translateX(-${currentIndex * 100 / slideCount}%)`;
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            currentIndex = (currentIndex === slideCount - 1) ? 0 : currentIndex + 1;
+            slides.style.transform = `translateX(-${currentIndex * 100 / slideCount}%)`;
+        });
+    </script>
+</body>
+</html>
