@@ -203,12 +203,13 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
+            flex-wrap: wrap;
             margin-top: 1.5rem;
         }
 
         .contact-button img {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             transition: transform 0.3s;
         }
 
@@ -229,6 +230,65 @@
 
         .contact-info a:hover {
             text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+
+            nav a {
+                margin: 0.5rem 0;
+                font-size: 0.9rem;
+            }
+
+            .slider {
+                height: 60vh;
+            }
+
+            .slide h1 {
+                font-size: 2.5rem;
+            }
+
+            #about {
+                padding: 2rem 1rem;
+            }
+
+            #about h2 {
+                font-size: 2rem;
+            }
+
+            #about p {
+                font-size: 1rem;
+            }
+
+            #story {
+                padding: 2rem 1rem;
+            }
+
+            #story h2 {
+                font-size: 2rem;
+            }
+
+            #story p {
+                font-size: 1rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .contact-button img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .contact-info {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -282,6 +342,8 @@
         <br><br>
         Professionally, I have worked as a Data Scientist at DataFlow Group in India, where I led numerous impactful projects. Following my passion, I joined Rutgers University, New Brunswick, for further studies. My aim is to push the boundaries of data science, leveraging insights to solve problems and automate redundant processes for a better tomorrow.</p>
     </section>
+
+    <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
         <div class="contact-buttons">
@@ -294,13 +356,13 @@
             <a href="https://github.com/sajeevsingh" class="contact-button">
                 <img src="github-logo.png" alt="Github">
             </a>
-
         </div>
         <div class="contact-info">
             <p>Email: <a href="mailto:sajeevysingh@gmail.com">sajeevysingh@gmail.com</a></p>
             <p>Phone: +1 (732) 558-9741</p>
         </div>
     </section>
+
     <footer>
         <p>&copy; 2024 Sajeev Singh. All Rights Reserved.</p>
     </footer>
